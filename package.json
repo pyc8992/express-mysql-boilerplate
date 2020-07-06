@@ -1,0 +1,28 @@
+{
+  "name": "express-mysql-boilerplate",
+  "version": "1.0.0",
+  "description": "NodeJS Express mysql boilerplate",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pyc8992/express-mysql-boilerplate.git"
+  },
+  "author": "pyc8992",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/pyc8992/express-mysql-boilerplate/issues"
+  },
+  "homepage": "https://github.com/pyc8992/express-mysql-boilerplate#readme",
+  "dependencies": {
+    "cookie-parser": "^1.4.5",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "express-session": "^1.17.1",
+    "mysql2": "^2.1.0",
+    "sequelize": "^5.22.3",
+    "sequelize-cli": "^5.5.1"
+  }
+}
