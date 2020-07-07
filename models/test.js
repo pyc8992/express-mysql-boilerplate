@@ -1,5 +1,7 @@
+const Temporal = require('sequelize-temporal');
+
 module.exports = (sequelize, DataTypes) => {
-  const Test = sequelize.define('test', {
+  const Test = Temporal(sequelize.define('test', {
     testCol1: {
       type: DataTypes.STRING(20), // 20글자 이하
       allowNull: false, // 필수, null 불가
@@ -14,10 +16,10 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: false,
     },
   }, {
-    table_name: 'tests',
+    table_name: 'test',
     charset: 'utf8',
     collate: 'utf8_general_ci', // 한글 저장
-  });
+  }), sequelize, {blocking: true, full: true});
 
   // Test.associate = (db) => {
   //   db.Test.hasMany(db.Post, { as: 'posts' });
