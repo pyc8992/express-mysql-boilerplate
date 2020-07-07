@@ -6,13 +6,11 @@ exports.getHello = async (req, res, next) => {
       testCol1: 'test1',
       testCol2: 'test2',
       testCol3: 'test3',
-  });
-  console.log(newData);
-
-  const count = await db.TestHistory.count();
-  console.log(count);
-  
-  return res.json(newData);
+    });
+    // const updateData = await db.Test.update({testCol1:'test_update2'}, {where: {id: 1}});
+    // const deleteData = await db.Test.destory({where: {id: 1}});
+    
+    return res.json(newData);
   } catch (e) {
     console.error(e);
     next(e);
