@@ -5,6 +5,42 @@ const cookieParser = require('cookie-parser');
 const expressSession = require('express-session');
 const dotenv = require('dotenv');
 
+const swaggerJSDoc = require('swagger-jsdoc');
+const swaggerUi = require('swagger-ui-express');
+
+const swaggerDefinition = {
+  openapi: '3.0.1',
+  info: { // API informations (required)
+    title: 'Auth Service', // Title (required)
+    version: '1.0.0', // Version (required)
+    description: 'Auth API' // Description (optional)
+  },
+  // host: 'localhost:4000', // Host (optional)
+  basePath: '/', // Base path (optional)
+  components: {
+    securitySchemes: {
+      ApiKeyAuth: {
+        type: 'apiKey',
+        in: 'header',
+        name: 'X-API-KEY',
+      }
+    }
+  },
+  security: [{
+    ApiKeyAuth: []
+  }]
+};
+
+// Options for the swagger docs
+const options = {
+  // Import swaggerDefinitions
+  swaggerDefinition,
+  // Path to the API docs
+  apis: ['./routes/*.js']
+};
+
+const swaggerSpec = swaggerJSDoc(options);
+
 dotenv.config();
 db.sequelize.sync();
 
@@ -22,6 +58,7 @@ app.use(expressSession({
   name: 'express-mysql',
 }));
 
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec));
 app.use('/', express.static('public'));
 app.use('/api/test', require('./routes/test'));
 

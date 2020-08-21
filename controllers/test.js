@@ -2,6 +2,8 @@ const db = require('../models');
 
 exports.getHello = async (req, res, next) => {
   try {
+    // console.log(req.headers);
+
     const newData = await db.Test.create({
       testCol1: 'test1',
       testCol2: 'test2',
